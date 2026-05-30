@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CYBER MUSIC // AI 音乐助手</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="scanline"></div>
+  <div class="noise"></div>
+
+  <!-- Danmaku Overlay -->
+  <div class="danmaku-overlay" id="danmakuOverlay"></div>
+
+  <div class="app-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <span class="logo-glitch" data-text="CYBER MUSIC">CYBER MUSIC</span>
+        <span class="logo-sub">AI MUSIC AGENT v2.0</span>
+      </div>
+      <div class="header-stats">
+        <div class="stat">
+          <span class="stat-label">TRACKS</span>
+          <span class="stat-value" id="trackCount">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">STATUS</span>
+          <span class="stat-value status-online">ONLINE</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Left Column: Chat + Results -->
+      <div class="left-column">
+        <!-- Agent Chat Panel -->
+        <section class="panel chat-panel">
+          <div class="panel-header">
+            <span class="panel-icon">◆</span>
+            <span class="panel-title">AI AGENT TERMINAL</span>
+            <span class="panel-status">ACTIVE</span>
+          </div>
+          <div class="chat-container" id="chatContainer">
+            <div class="chat-message agent">
+              <div class="message-avatar">
+                <span class="avatar-icon">⚡</span>
+              </div>
+              <div class="message-content">
+                <div class="message-header">
+                  <span class="sender">AGENT</span>
+                  <span class="time">SYSTEM</span>
+                </div>
+                <div class="message-text">
+                  欢迎来到 CYBER MUSIC。我是你的 AI 音乐助手。<br><br>
+                  告诉我你想听什么歌，我会从 Bilibili 为你搜索并转换音频。<br><br>
+                  <span class="command-hint">[ 输入歌曲名或歌手名开始搜索 ]</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chat-input-container">
+            <div class="input-wrapper">
+              <span class="input-prefix">▶</span>
+              <input type="text" id="chatInput" class="chat-input" placeholder="输入你想听的歌曲..." autocomplete="off">
+              <button class="send-btn" id="sendBtn">
+                <span>SEND</span>
+                <span class="btn-icon">↗</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Results Panel -->
+        <section class="panel results-panel">
+          <div class="panel-header">
+            <span class="panel-icon">◆</span>
+            <span class="panel-title">SEARCH RESULTS</span>
+            <span class="panel-status" id="resultsStatus">IDLE</span>
+          </div>
+          <div class="results-container" id="resultsContainer">
+            <div class="empty-state">
+              <div class="empty-icon">◉</div>
+              <div class="empty-text">等待搜索指令...</div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right Column: Playlist -->
+      <div class="right-column">
+        <section class="panel playlist-panel">
+          <div class="panel-header">
+            <span class="panel-icon">◆</span>
+            <span class="panel-title">PLAYLIST</span>
+            <span class="panel-status" id="playlistCount">0 TRACKS</span>
+          </div>
+          <div class="playlist-container" id="playlistContainer">
+            <div class="empty-playlist">
+              <span>播放列表为空</span>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Player Panel (Full Width Bottom) -->
+      <section class="panel player-panel">
+        <div class="player-container">
+          <div class="player-info">
+            <div class="now-playing" id="nowPlaying">
+              <span class="np-label">NOW PLAYING</span>
+              <span class="np-title" id="npTitle">未选择曲目</span>
+            </div>
+            <div class="player-progress">
+              <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+                <div class="progress-glow"></div>
+              </div>
+              <div class="time-info">
+                <span id="currentTime">0:00</span>
+                <span id="duration">0:00</span>
+              </div>
+            </div>
+            <div class="player-controls">
+              <button class="control-btn" id="prevBtn">
+                <span>⏮</span>
+              </button>
+              <button class="control-btn play-btn" id="playBtn">
+                <span id="playIcon">▶</span>
+              </button>
+              <button class="control-btn" id="nextBtn">
+                <span>⏭</span>
+              </button>
+              <div class="volume-control">
+                <span class="volume-icon">🔊</span>
+                <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="80">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Hidden Audio Element -->
+  <audio id="audioPlayer" preload="auto"></audio>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

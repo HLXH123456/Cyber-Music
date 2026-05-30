@@ -1,0 +1,5 @@
+node_modules/
+downloads/
+playlist.json
+.DS_Store
+*.log
