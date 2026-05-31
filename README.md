@@ -89,4 +89,4 @@ cyber-music/
 
 ## 许可证
 
-MIT License
+本项目基于 MIT License 开源，详情请查看 [LICENSE](./LICENSE) 文件。
